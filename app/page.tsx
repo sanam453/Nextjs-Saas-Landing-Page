@@ -1,9 +1,10 @@
-import { FixedNavbar } from "./components";
+import { FixedNavbar, Hero } from "@/components";
 
 export default function Home() {
   return (
-    <section>
+    <section className="container mx-auto px-8">
       <FixedNavbar />
+      <Hero />
     </section>
   );
 }
