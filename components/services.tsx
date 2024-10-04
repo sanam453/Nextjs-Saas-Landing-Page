@@ -1,6 +1,20 @@
 "use client";
 
 import React from "react";
+
+// charts import
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  PieChart,
+  Pie,
+  Cell,
+} from "recharts";
+
+// components
 import {
   Avatar,
   Card,
@@ -9,165 +23,73 @@ import {
   Typography,
 } from "@material-tailwind/react";
 
-// charts import
-import dynamic from "next/dynamic";
 import Image from "next/image";
 
-const Chart = dynamic(() => import("react-apexcharts"), {
-  ssr: false,
-});
-
-const RadialChart = {
-  chart: {
-    type: "radialBar",
-  },
-  colors: ["#01CC73"],
-  series: [62],
-
-  plotOptions: {
-    radialBar: {
-      hollow: {
-        margin: 10,
-        size: "60%",
-      },
-
-      dataLabels: {
-        showOn: "always",
-        name: {
-          offsetY: 10,
-          show: true,
-          color: "#343434",
-          fontSize: "20px",
-        },
-        value: {
-          color: "#111",
-          fontSize: "20px",
-          show: false,
-        },
-      },
-    },
-  },
-
-  labels: ["Goal"],
-};
-
-const MultiRadialChart = {
-  chart: {
-    height: 280,
-    type: "radialBar",
-  },
-  colors: ["#C1E3D4", "#01CC73", "#0D6E44", "#167A4E"],
-  series: [67, 84, 97, 61],
-
-  plotOptions: {
-    radialBar: {
-      hollow: {
-        margin: 15,
-        size: "70%",
-      },
-      dataLabels: {
-        total: {
-          show: true,
-          label: "TOTAL",
-        },
-      },
-    },
-  },
-
-  stroke: {
-    lineCap: "round",
-  },
-  labels: ["Goal"],
-};
-
-const AreaChart = {
-  chart: {
-    type: "bar",
-    height: 150,
-    toolbar: {
-      show: false,
-    },
-    zoom: {
-      enabled: false,
-    },
-  },
-  colors: ["#0BB96D"],
-  fill: {
-    type: "gradient",
-    gradient: {
-      shadeIntensity: 1,
-      opacityFrom: 0,
-      opacityTo: 0,
-      stops: [0, 100],
-    },
-  },
-  title: {
-    show: "",
-  },
-  dataLabels: {
-    enabled: false,
-  },
-  legend: {
-    show: false,
-  },
-  markers: {
-    size: 5,
-    strokeWidth: 0,
-    strokeColors: "solid",
-    hover: {
-      size: 7,
-    },
-  },
-  stroke: {
-    curve: "smooth",
-    width: 2,
-  },
-  grid: {
-    show: false,
-    borderColor: "#EEEEEE",
-    strokeDashArray: 5,
-    xaxis: {
-      lines: {
-        show: false,
-      },
-    },
-    padding: {
-      top: 0,
-      right: 0,
-      bottom: 0,
-      left: 0,
-    },
-  },
-  tooltip: {
-    theme: "dark",
-  },
-  xaxis: {
-    axisTicks: {
-      show: true,
-    },
-    axisBorder: {
-      show: true,
-    },
-    labels: {
-      show: true, // Hide x-axis labels
-    },
-  },
-  yaxis: {
-    labels: {
-      show: true, // Hide x-axis labels
-    },
-  },
-};
-
-const AreaChartSeries = [
+const AreaChartData = [
   {
-    name: "series1",
-    data: [
-      11, 80, 50, 100, 139, 100, 120, 67, 91, 129, 101, 75, 91, 11, 80, 50, 100,
-      139, 67, 91, 129, 101, 75, 91,
-    ],
+    name: "Jan",
+    uv: 0,
+  },
+  {
+    name: "Feb",
+    uv: 2000,
+  },
+  {
+    name: "Mar",
+    uv: 800,
+  },
+  {
+    name: "Apr",
+    uv: 3080,
+  },
+  {
+    name: "May",
+    uv: 1890,
+  },
+  {
+    name: "Jun",
+    uv: 3690,
+  },
+  {
+    name: "Jul",
+    uv: 1090,
+  },
+  {
+    name: "Aug",
+    uv: 2900,
+  },
+  {
+    name: "Sep",
+    uv: 1090,
+  },
+  {
+    name: "Oct",
+    uv: 3680,
+  },
+  {
+    name: "Nov",
+    uv: 2090,
+  },
+  {
+    name: "Dec",
+    uv: 30,
   },
 ];
+
+const PieChartData = [
+  { name: "Group A", value: 400 },
+  { name: "Group B", value: 300 },
+  { name: "Group C", value: 300 },
+  { name: "Group D", value: 200 },
+];
+
+const MultiPieChart = [
+  { name: "Group A", value: 400 },
+  { name: "Group B", value: 300 },
+  { name: "Group C", value: 300 },
+  { name: "Group D", value: 200 },
+];
+const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 export function Services() {
   const AVATARS = [
@@ -187,7 +109,7 @@ export function Services() {
         Our SaaS products boost collaboration and efficiency, empowering your
         business to grow with user-friendly designs and seamless integration.
       </Typography>
-      <div className="mt-14 grid gap-y-6 lg:gap-x-6 lg:grid-cols-3 grid-cols-1">
+      <div className="mt-14 grid gap-y-6 xl:gap-x-6 xl:grid-cols-3 grid-cols-1">
         <div className="col-span-1">
           <Card className="p-4 shadow-md border-0 bg-[#F2F2F2]">
             <CardHeader>
@@ -197,13 +119,19 @@ export function Services() {
                 improvement.
               </Typography>
             </CardHeader>
-            <CardBody className="p-0">
-              <Chart
-                options={RadialChart}
-                series={RadialChart.series}
-                type="radialBar"
-                height={290}
-              />
+            <CardBody>
+              <PieChart width={400} height={300}>
+                <Pie
+                  data={PieChartData}
+                  dataKey="value"
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={70}
+                  outerRadius={90}
+                  fill="#01CC73"
+                  label
+                />
+              </PieChart>
             </CardBody>
           </Card>
         </div>
@@ -231,12 +159,26 @@ export function Services() {
                 ))}
               </div>
             </CardHeader>
-            <CardBody>
-              <Chart
-                options={MultiRadialChart}
-                series={MultiRadialChart.series}
-                type="radialBar"
-              />
+            <CardBody className="p-0">
+              <PieChart width={400} height={400}>
+                <Pie
+                  data={MultiPieChart}
+                  cx="50%"
+                  cy="50%"
+                  innerRadius={60}
+                  outerRadius={80}
+                  fill="#01CC73"
+                  paddingAngle={15}
+                  dataKey="value"
+                >
+                  {MultiPieChart.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+              </PieChart>
             </CardBody>
           </Card>
         </div>
@@ -248,20 +190,34 @@ export function Services() {
               <Typography type="h6">
                 Improve your hiring process based on existing data
               </Typography>
-              <Typography className="mt-4 text-tertiary">
+              <Typography className="my-4 text-tertiary">
                 Discover whats working and what could be improved in your hiring
-                process with Recruitment. With user-friendly dashboards,
-                you&apos;ll have the power of data at your fingertips.
+                process with Recruitment.
               </Typography>
             </CardHeader>
-            <CardBody>
-              <Chart
-                options={AreaChart}
-                series={AreaChartSeries}
-                type="area"
-                width=""
-                height={220}
-              />
+            <CardBody className="w-full h-full overflow-scroll p-0">
+              <LineChart
+                width={900}
+                height={270}
+                data={AreaChartData}
+                margin={{
+                  top: 0,
+                  right: 10,
+                  left: 0,
+                  bottom: 0,
+                }}
+              >
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Line
+                  type="monotone"
+                  dataKey="pv"
+                  stroke="#01CC73"
+                  activeDot={{ r: 8 }}
+                />
+                <Line type="monotone" dataKey="uv" stroke="#01CC73" />
+              </LineChart>
             </CardBody>
           </Card>
         </div>
