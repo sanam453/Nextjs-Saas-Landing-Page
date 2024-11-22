@@ -91,7 +91,7 @@ function customPagination(_: unknown, className: string) {
 
 export function Testimonials() {
   return (
-    <section className="my-32">
+    <section id="testimonials" className="my-32 px-4 md:px-8">
       <Typography as="h2" type="h4" className="text-center">
         Hear from Our Happy Customers
       </Typography>
@@ -111,7 +111,21 @@ export function Testimonials() {
             renderBullet: customPagination,
           }}
           modules={[Navigation, Pagination]}
-          className="relative rounded-lg [&_div.swiper-button-next]:text-background [&_div.swiper-button-prev]:text-background "
+          breakpoints={{
+            420: {
+              slidesPerView: 1, // Show 1 slide on mobile
+              spaceBetween: 10,
+            },
+            768: {
+              slidesPerView: 2, // Show 2 slides on tablet
+              spaceBetween: 15,
+            },
+            1024: {
+              slidesPerView: 3, // Show 3 slides on larger screens
+              spaceBetween: 20,
+            },
+          }}
+          className="relative rounded-lg"
         >
           {DATA.map(({ img, about, name, company }, index) => (
             <SwiperSlide key={index} className="select-none">

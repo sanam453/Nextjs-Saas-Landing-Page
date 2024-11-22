@@ -29,7 +29,7 @@ export function Faq() {
         <Accordion>
           <Accordion.Item
             value="faq-1"
-            className="mb-2 bg-[#F2F2F2] rounded-lg px-6 py-2 border-0"
+            className="mb-2 bg-background rounded-lg px-6 py-2 border-0"
           >
             <Accordion.Trigger>
               <Typography as="h3" type="lead" className="font-medium">
@@ -49,7 +49,7 @@ export function Faq() {
           </Accordion.Item>
           <Accordion.Item
             value="faq-2"
-            className="mb-2 bg-[#F2F2F2] rounded-lg px-6 py-2 border-0"
+            className="mb-2 bg-background rounded-lg px-6 py-2 border-0"
           >
             <Accordion.Trigger>
               <Typography as="h3" type="lead" className="font-medium">
@@ -69,7 +69,7 @@ export function Faq() {
           </Accordion.Item>
           <Accordion.Item
             value="faq-3"
-            className="mb-2 bg-[#F2F2F2] rounded-lg px-6 py-2 border-0"
+            className="mb-2 bg-background rounded-lg px-6 py-2 border-0"
           >
             <Accordion.Trigger>
               <Typography as="h3" type="lead" className="font-medium">
@@ -88,7 +88,7 @@ export function Faq() {
           </Accordion.Item>
           <Accordion.Item
             value="faq-4"
-            className="mb-2 bg-[#F2F2F2] rounded-lg px-6 py-2 border-0"
+            className="mb-2 bg-background rounded-lg px-6 py-2 border-0"
           >
             <Accordion.Trigger>
               <Typography as="h3" type="lead" className="font-medium">
@@ -108,7 +108,7 @@ export function Faq() {
           </Accordion.Item>
           <Accordion.Item
             value="faq-5"
-            className="mb-2 bg-[#F2F2F2] rounded-lg px-6 py-2 border-0"
+            className="mb-2 bg-background rounded-lg px-6 py-2 border-0"
           >
             <Accordion.Trigger>
               <Typography as="h3" type="lead" className="font-medium">

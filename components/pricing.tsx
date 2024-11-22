@@ -44,7 +44,7 @@ const DATA = [
 
 export function Pricing() {
   return (
-    <section className="my-32">
+    <section id="pricing" className="my-32">
       <Typography as="h2" type="h4" className="text-center">
         Pricing Made Easy
       </Typography>
@@ -58,13 +58,13 @@ export function Pricing() {
           <Card
             key={index}
             color={index === 1 ? "primary" : "default"}
-            className={`${index === 1 ? "text-white" : "text-secondary"}`}
+            className={`p-4 border-0 ${index === 1 ? "text-white" : "text-secondary"}`}
           >
-            <Card.Header className="p-4">
+            <Card.Header>
               <Typography
                 as="h3"
                 type="h6"
-                className={`${index === 1 ? "text-white" : "text-secondary"}`}
+                className={`${index === 1 ? "text-white" : "text-black"}`}
               >
                 {title}
               </Typography>
@@ -76,7 +76,7 @@ export function Pricing() {
                 {description}
               </Typography>
             </Card.Header>
-            <Card.Body as="ul" className="px-6">
+            <Card.Body as="ul">
               <div className="space-y-2 pb-10">
                 {options.map((option, index) => (
                   <li key={index} className="flex items-center gap-4">
@@ -89,7 +89,7 @@ export function Pricing() {
               <Typography
                 as="span"
                 type="h4"
-                className="mt-3 flex gap-1 text-foreground"
+                className="mt-3 flex gap-1 text-black"
               >
                 <span className="lg:text-2xl text-sm">$</span>
                 {price}
@@ -103,7 +103,7 @@ export function Pricing() {
                 per person
               </Typography>
             </Card.Body>
-            <Card.Footer className="py-6">
+            <Card.Footer>
               <Button
                 size="lg"
                 color={index === 1 ? "secondary" : "primary"}

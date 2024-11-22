@@ -4,6 +4,7 @@ import React from "react";
 
 // charts import
 import {
+  ResponsiveContainer,
   LineChart,
   Line,
   XAxis,
@@ -11,7 +12,6 @@ import {
   Tooltip,
   PieChart,
   Pie,
-  Cell,
 } from "recharts";
 
 // components
@@ -81,15 +81,9 @@ const PieChartData = [
   { name: "Group B", value: 300 },
   { name: "Group C", value: 300 },
   { name: "Group D", value: 200 },
+  { name: "Group E", value: 278 },
+  { name: "Group F", value: 189 },
 ];
-
-const MultiPieChart = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 },
-];
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042"];
 
 export function Services() {
   const AVATARS = [
@@ -101,7 +95,7 @@ export function Services() {
   ];
 
   return (
-    <section className="my-32">
+    <section id="services" className="my-32">
       <Typography type="h4" className="text-center">
         Boost Your Growth with Our SaaS Solutions
       </Typography>
@@ -111,7 +105,7 @@ export function Services() {
       </Typography>
       <div className="mt-14 grid gap-y-6 xl:gap-x-6 xl:grid-cols-3 grid-cols-1">
         <div className="col-span-1">
-          <Card className="p-4 shadow-md border-0 bg-[#F2F2F2]">
+          <Card className="p-4 shadow-md border-0 bg-background">
             <CardHeader>
               <Typography type="h6">Analytics</Typography>
               <Typography className="mt-4 text-tertiary">
@@ -120,32 +114,46 @@ export function Services() {
               </Typography>
             </CardHeader>
             <CardBody>
-              <PieChart width={400} height={300}>
-                <Pie
-                  data={PieChartData}
-                  dataKey="value"
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={70}
-                  outerRadius={90}
-                  fill="#01CC73"
-                  label
-                />
-              </PieChart>
+              <ResponsiveContainer
+                width="100%"
+                height={300}
+                className="translate-y-10"
+              >
+                <PieChart>
+                  <Pie
+                    dataKey="value"
+                    startAngle={180}
+                    endAngle={0}
+                    data={PieChartData}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={80}
+                    fill="#01CC73"
+                    label
+                  />
+                </PieChart>
+              </ResponsiveContainer>
             </CardBody>
           </Card>
         </div>
         <div className="col-span-2">
-          <Card className="p-4 shadow-md border-0 bg-[#F2F2F2] flex flex-col md:flex-row justify-between">
-            <CardHeader className="flex flex-col h-80 justify-between">
+          <Card className="p-4 shadow-md border-0 bg-background grid xl:grid-cols-3 gap-6 grid-cols-1 w-full">
+            <CardHeader className="col-span-2 flex flex-col h-full justify-between">
               <div>
                 <Typography type="h6">Advanced Analytics</Typography>
-                <Typography className="mt-4 text-tertiary max-w-lg">
+                <Typography className="mt-4 text-tertiary xl:max-w-lg">
                   Our advanced analytics tools provide valuable insights into
                   your business performance. Track key metrics, visualize data
                   trends, and make informed decisions to optimize your
                   operations. With user-friendly dashboards, you&apos;ll have
                   the power of data at your fingertips.
+                </Typography>
+                <Typography className="mt-4 text-tertiary xl:max-w-lg">
+                  {" "}
+                  Track key metrics, visualize data trends, and make informed
+                  decisions to optimize your operations. With user-friendly
+                  dashboards, you&apos;ll have the power of data at your
+                  fingertips.
                 </Typography>
               </div>
               <div className="flex items-center -space-x-4">
@@ -157,35 +165,32 @@ export function Services() {
                     src={img}
                   />
                 ))}
+                <Typography type="small" className="text-black font-bold pl-6">50+</Typography>
               </div>
             </CardHeader>
-            <CardBody className="p-0">
-              <PieChart width={400} height={400}>
-                <Pie
-                  data={MultiPieChart}
-                  cx="50%"
-                  cy="50%"
-                  innerRadius={60}
-                  outerRadius={80}
-                  fill="#01CC73"
-                  paddingAngle={15}
-                  dataKey="value"
-                >
-                  {MultiPieChart.map((entry, index) => (
-                    <Cell
-                      key={`cell-${index}`}
-                      fill={COLORS[index % COLORS.length]}
-                    />
-                  ))}
-                </Pie>
-              </PieChart>
+            <CardBody>
+              <ResponsiveContainer width="100%" height={400}>
+                <PieChart>
+                  <Pie
+                    dataKey="value"
+                    isAnimationActive={false}
+                    data={PieChartData}
+                    cx="50%"
+                    cy="50%"
+                    outerRadius={80}
+                    fill="#01CC73"
+                    label
+                  />
+                  <Tooltip />
+                </PieChart>
+              </ResponsiveContainer>
             </CardBody>
           </Card>
         </div>
       </div>
-      <div className="mt-6 grid gap-y-6 lg:gap-x-6 lg:grid-cols-3 grid-cols-1">
+      <div className="mt-6 grid gap-y-6 xl:gap-x-6 xl:grid-cols-3 grid-cols-1">
         <div className="col-span-2">
-          <Card className="p-4 shadow-md border-0 bg-[#F2F2F2]">
+          <Card className="p-4 shadow-md border-0 bg-background">
             <CardHeader>
               <Typography type="h6">
                 Improve your hiring process based on existing data
@@ -195,10 +200,9 @@ export function Services() {
                 process with Recruitment.
               </Typography>
             </CardHeader>
-            <CardBody className="w-full h-full overflow-scroll p-0">
+            <CardBody className="w-full h-full overflow-scroll px-0">
+            <ResponsiveContainer width="100%" height={270}>
               <LineChart
-                width={900}
-                height={270}
                 data={AreaChartData}
                 margin={{
                   top: 0,
@@ -218,6 +222,7 @@ export function Services() {
                 />
                 <Line type="monotone" dataKey="uv" stroke="#01CC73" />
               </LineChart>
+              </ResponsiveContainer>
             </CardBody>
           </Card>
         </div>
@@ -234,7 +239,7 @@ export function Services() {
                 width={512}
                 src="/animation.gif"
                 alt="animation"
-                className="h-80 w-80"
+                className="w-[21rem] h-[21rem]"
               />
             </CardBody>
           </Card>

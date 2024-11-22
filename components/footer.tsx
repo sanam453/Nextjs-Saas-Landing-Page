@@ -12,16 +12,16 @@ const LINKS = [
     href: "/",
   },
   {
-    title: "Products",
-    href: "#products",
+    title: "Services",
+    href: "#services",
   },
   {
     title: "Features",
     href: "#features",
   },
   {
-    title: "Testimonial",
-    href: "#testimonial",
+    title: "Testimonials",
+    href: "#testimonials",
   },
   {
     title: "Pricing",
@@ -37,7 +37,7 @@ const YEAR = new Date().getFullYear();
 
 export function Footer() {
   return (
-    <footer className="w-full mb-6">
+    <footer id="footer" className="w-full mb-6 text-center mx-auto">
       <Typography
         as="a"
         color="primary"
@@ -51,14 +51,14 @@ export function Footer() {
       <ul className="my-8 flex flex-wrap items-center gap-x-6 gap-y-2 justify-center">
         {LINKS.map(({ title, href }, key) => (
           <li key={key}>
-            <Typography as="a" href={href} className="hover:text-primary">
+            <Typography as="a" type="small" href={href}>
               {title}
             </Typography>
           </li>
         ))}
       </ul>
       <hr className="mb-8 border-surface" />
-      <Typography className="text-center">
+      <Typography type="small">
         &copy; {YEAR} Lunchify All rights reserved.
       </Typography>
     </footer>

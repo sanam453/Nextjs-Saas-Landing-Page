@@ -48,7 +48,7 @@ const DATA = [
 
 export function Features() {
   return (
-    <section className="my-32">
+    <section id="features" className="my-32">
       <Typography as="h2" type="h4" className="text-center">
         Key Features
       </Typography>
@@ -56,18 +56,24 @@ export function Features() {
         Launchify has quickly become the to-go content marketing solution for
         over 4000 clients around the world.
       </Typography>
-      <div className="container bg-[#F2F2F2] md:py-32 py-16 bg-opacity-50 rounded-lg grid md:gap-y-28 gap-y-10 place-items-center lg:grid-cols-3 md:grid-cols-2 grid-cols-1">
-        {DATA.map(({ icon: Icon, title, desc }, key) => (
-          <Card key={key} className="shadow-none border-0 max-w-[16rem]">
-            <CardBody>
-              <Icon className="h-10 w-10" />
-              <Typography as="h3" type="h6" className="font-semibold mt-4 mb-2">
-                {title}
-              </Typography>
-              <Typography className="text-tertiary">{desc}</Typography>
-            </CardBody>
-          </Card>
-        ))}
+      <div className="container bg-background md:py-32 py-16 px-4 bg-opacity-50 rounded-lg">
+        <div className="max-w-5xl mx-auto grid md:gap-y-28 gap-y-10 place-items-center lg:grid-cols-3 sm:grid-cols-2 grid-cols-1">
+          {DATA.map(({ icon: Icon, title, desc }, key) => (
+            <Card color="transparent" key={key} className="shadow-none border-0 sm:max-w-[16rem]">
+              <CardBody>
+                <Icon className="h-10 w-10" />
+                <Typography
+                  as="h3"
+                  type="h6"
+                  className="font-semibold mt-4 mb-2"
+                >
+                  {title}
+                </Typography>
+                <Typography className="text-tertiary">{desc}</Typography>
+              </CardBody>
+            </Card>
+          ))}
+        </div>
       </div>
     </section>
   );

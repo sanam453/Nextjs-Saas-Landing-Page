@@ -1,6 +1,8 @@
 "use client";
 
 import React from "react";
+
+// @components
 import {
   Navbar,
   Collapse,
@@ -9,6 +11,7 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 
+// @icons
 import { RocketLaunchIcon } from "@heroicons/react/16/solid";
 
 export function FixedNavbar() {
@@ -39,8 +42,8 @@ export function FixedNavbar() {
         color="secondary"
         className="p-1 font-normal"
       >
-        <a href="#products" className="flex items-center">
-          Products
+        <a href="#services" className="flex items-center">
+          Services
         </a>
       </Typography>
       <Typography
@@ -59,7 +62,7 @@ export function FixedNavbar() {
         color="secondary"
         className="p-1 font-normal"
       >
-        <a href="#testimonial" className="flex items-center">
+        <a href="#testimonials" className="flex items-center">
           Testimonial
         </a>
       </Typography>
