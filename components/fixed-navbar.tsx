@@ -29,7 +29,7 @@ export function FixedNavbar() {
         color="secondary"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <a href="/" className="flex items-center">
           Home
         </a>
       </Typography>
@@ -39,7 +39,7 @@ export function FixedNavbar() {
         color="secondary"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <a href="#products" className="flex items-center">
           Products
         </a>
       </Typography>
@@ -49,7 +49,7 @@ export function FixedNavbar() {
         color="secondary"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <a href="#features" className="flex items-center">
           Features
         </a>
       </Typography>
@@ -59,7 +59,7 @@ export function FixedNavbar() {
         color="secondary"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <a href="#testimonial" className="flex items-center">
           Testimonial
         </a>
       </Typography>
@@ -69,7 +69,7 @@ export function FixedNavbar() {
         color="secondary"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <a href="#pricing" className="flex items-center">
           Pricing
         </a>
       </Typography>
@@ -79,7 +79,7 @@ export function FixedNavbar() {
         color="secondary"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
+        <a href="#faq" className="flex items-center">
           FAQ
         </a>
       </Typography>
