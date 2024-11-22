@@ -59,7 +59,7 @@ export function Features() {
       <div className="container bg-background md:py-32 py-16 px-4 bg-opacity-50 rounded-lg">
         <div className="max-w-5xl mx-auto grid md:gap-y-28 gap-y-10 place-items-center lg:grid-cols-3 sm:grid-cols-2 grid-cols-1">
           {DATA.map(({ icon: Icon, title, desc }, key) => (
-            <Card color="transparent" key={key} className="shadow-none border-0 sm:max-w-[16rem]">
+            <Card key={key} className="shadow-none border-0 sm:max-w-[16rem] bg-transparent">
               <CardBody>
                 <Icon className="h-10 w-10" />
                 <Typography
