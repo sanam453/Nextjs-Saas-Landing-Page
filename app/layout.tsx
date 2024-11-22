@@ -1,13 +1,8 @@
-import type { Metadata } from "next";
-import { Poppins } from 'next/font/google';
+// @styles
 import "./globals.css";
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-poppins",
-  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-});
+// @meta
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Launchify",
@@ -20,10 +15,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${poppins.variable} ${poppins.className} antialiased`}>
-        {children}
-      </body>
+    <html lang="en" className="scroll-smooth">
+      <body className="antialiased">
+       {/* <link
+          href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+          rel="stylesheet"
+          type="text/css"
+        /> */}
+      {children}</body>
     </html>
   );
 }

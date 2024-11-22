@@ -1,4 +1,4 @@
-import { FixedNavbar, Hero, Brands, Services, Features, Testimonials, Pricing } from "@/components";
+import { FixedNavbar, Hero, Brands, Services, Features, Testimonials, Pricing, Faq } from "@/components";
 
 export default function Home() {
   return (
@@ -10,6 +10,7 @@ export default function Home() {
       <Features />
       <Testimonials />
       <Pricing />
+      <Faq />
     </section>
   );
 }

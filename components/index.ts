@@ -5,3 +5,4 @@ export * from "./services";
 export * from "./features";
 export * from "./testimonials";
 export * from "./pricing";
+export * from "./faq";
